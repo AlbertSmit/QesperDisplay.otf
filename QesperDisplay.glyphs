@@ -17,7 +17,7 @@ C,
 "DEUS/space EX/space MACHINA.",
 U,
 D,
-A,
+"WEEKDAY\012ENGINEER.\012\012WEEKEND\012TYPEFACECREATOR.",
 S,
 G,
 X,
@@ -65,7 +65,8 @@ K,
 "]",
 "THE/space QUICK/space BROWN/space FOX/space JUMPS/space OVER/space THE/space LAZY/space DOG",
 J,
-"L/I_J.liga F"
+"L/I_J.liga F",
+"TYPO-\012GRAPHY."
 );
 copyright = "Copyright © 2020 by Albert Smit.";
 customParameters = (
@@ -108,7 +109,7 @@ xHeight = 435;
 glyphs = (
 {
 glyphname = A;
-lastChange = "2020-10-24 12:22:30 +0000";
+lastChange = "2020-10-24 15:07:11 +0000";
 layers = (
 {
 layerId = "79BCC730-0F44-4A42-A012-F492207EDC30";
