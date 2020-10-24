@@ -37,7 +37,7 @@ is the folder that hosts images for this `README`.
 Feel you got any suggestions or improvements? Feel free to make an issue or PR.
 
 ## License?
-Fully _Open Source_ (SIL); check out `LICENSE.md`.
+Fully _Open Source_ (OFL1.1); check out `LICENSE.md`.
 
 
 ---
