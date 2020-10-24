@@ -7,6 +7,19 @@
 ---
 This _(open source)_ font is a work in progress, alongside this project (**[Qesper](https://github.com/albertsmit/qesper)** as a synth).
 
+## Ruleset
+The font is created around a basic ruleset.
+
+<p>  
+    <img src="images/rules.png" alt="Ruleset" height="150">
+</p>
+
+1. **_The most-left line is slanted at `84.5` degrees._**\
+There is no logic to this; other than _it looking nice_.
+
+2. **The top-left and bottom-right corners are cleared.**\
+(With a current exception for the 'A').
+
 ## Pangram
 (A sentence containing all letters in the alphabet).
 <p>  
