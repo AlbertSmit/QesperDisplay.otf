@@ -17,7 +17,7 @@ jobs:
 
       - name: Zip fonts 
         run: |
-          zip -r ${{ steps.get_version.outputs.VERSION }}.zip dist
+          zip -r ${{ steps.get_version.outputs.VERSION }}.zip dist LICENSE.md
           
       - name: Create Release
         id: create_release
@@ -27,8 +27,9 @@ jobs:
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
           release_name: ${{ steps.get_version.outputs.VERSION }}
-          body: |
-            ${{ github.ref }}
+          # TODO: Implement a changelog.  
+          # body: |
+          #   ${{ steps.get_version.outputs.VERSION }}
           draft: false
           prerelease: false
           
