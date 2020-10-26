@@ -9,15 +9,24 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
       - name: Version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        run: echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
+        
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Zip fonts 
         run: |
           zip -r ${{ steps.get_version.outputs.VERSION }}.zip dist LICENSE.md
+          
+      - name: Get Changelog Entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2
+        with:
+          validation_depth: 10
+          version: ${{ steps.get_version.outputs.current_version }}
+          path: ./CHANGELOG.md
           
       - name: Create Release
         id: create_release
@@ -25,11 +34,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
-          release_name: ${{ steps.get_version.outputs.VERSION }}
-          # TODO: Implement a changelog.  
-          # body: |
-          #   ${{ steps.get_version.outputs.VERSION }}
+          tag_name: ${{ steps.get_version.outputs.current_version }}
+          release_name: Release ${{ steps.get_version.outputs.current_version }}
+          body: |
+            ${{ steps.changelog_reader.outputs.changes }}
           draft: false
           prerelease: false
           
@@ -40,6 +48,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./${{ steps.get_version.outputs.VERSION }}.zip
-          asset_name: ${{ steps.get_version.outputs.VERSION }}.zip
+          asset_path: ./${{ steps.get_version.outputs.current_version }}.zip
+          asset_name: ${{ steps.get_version.outputs.current_version }}.zip
           asset_content_type: application/zip
